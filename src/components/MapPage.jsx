@@ -1,20 +1,15 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
-import axios from "axios";
 import "./MapPage.css";
 
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
 
 export default function MapPage() {
-  const handleStateClick = async (stateName) => {
-    try {
-      const response = await axios.get(
-        `/api/election-results?state=${stateName}`
-      );
-      console.log(response.data); // Handle the response data as needed
-    } catch (error) {
-      console.error("Error fetching election results:", error);
-    }
+  const navigate = useNavigate();
+
+  const handleStateClick = (stateName) => {
+    navigate(`/state/${stateName}`);
   };
 
   return (
