@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import "./StateResults.css";
 
@@ -33,6 +33,9 @@ export default function StateResults() {
       <h1>Election Results for {stateName}</h1>
       <p>Trump Votes: {results.Trump}%</p>
       <p>Harris Votes: {results.Harris}%</p>
+      <Link to="/Map" className="back-to-map-button">
+        Back to Map
+      </Link>
     </div>
   );
 }
