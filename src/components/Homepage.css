@@ -1,0 +1,33 @@
+/* Homepage.css */
+html,
+body {
+  height: 100%; /* Ensure the html and body elements take up the full height */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+}
+
+body {
+  background-image: url("https://static.euronews.com/articles/stories/08/83/03/40/1920x1080_cmsv2_028eb194-3a48-5347-96fd-e333e646f176-8830340.jpg"); /* Update the path to your image */
+  background-size: cover; /* Ensure the image covers the entire background */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+}
+
+.container {
+  text-align: center;
+  margin-top: 50px;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.8
+  ); /* Semi-transparent white background */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  color: #4caf50;
+  font-family: Arial, sans-serif;
+}
