@@ -1,33 +1,84 @@
 /* Homepage.css */
-html,
-body {
-  height: 100%; /* Ensure the html and body elements take up the full height */
-  margin: 0; /* Remove default margin */
-  padding: 0; /* Remove default padding */
-}
-
-body {
-  background-image: url("https://static.euronews.com/articles/stories/08/83/03/40/1920x1080_cmsv2_028eb194-3a48-5347-96fd-e333e646f176-8830340.jpg"); /* Update the path to your image */
-  background-size: cover; /* Ensure the image covers the entire background */
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Prevent the image from repeating */
+body,
+html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: url("https://static.euronews.com/articles/stories/08/83/03/40/1920x1080_cmsv2_028eb194-3a48-5347-96fd-e333e646f176-8830340.jpg")
+    no-repeat center center/cover; /* Background image covering the entire site */
 }
 
 .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Align items to the top */
+  height: 100vh;
   text-align: center;
-  margin-top: 50px;
-  background-color: rgba(
+  color: white;
+  animation: fadeIn 2s ease-in-out;
+  padding-top: 60px; /* Add padding to move content down */
+  background: rgba(
     255,
     255,
     255,
-    0.8
-  ); /* Semi-transparent white background */
-  padding: 20px;
+    0.3
+  ); /* Lighter semi-transparent background */
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow to the container */
 }
 
-h1 {
-  color: #4caf50;
-  font-family: Arial, sans-serif;
+.title {
+  font-size: 48px;
+  margin-bottom: 20px;
+  margin-top: 0; /* Remove top margin to move the title up */
+  animation: slideIn 1s ease-in-out;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add shadow to the text */
+}
+
+.description {
+  font-size: 24px;
+  margin-bottom: 40px;
+  max-width: 600px;
+  animation: slideIn 1.5s ease-in-out;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add shadow to the text */
+}
+
+.photo-gallery {
+  display: flex;
+  gap: 20px;
+}
+
+.photo {
+  width: 150px;
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  transition: transform 0.3s;
+}
+
+.photo:hover {
+  transform: scale(1.1);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
