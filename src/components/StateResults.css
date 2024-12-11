@@ -18,6 +18,19 @@ h1 {
   margin-bottom: 20px;
 }
 
+.gif-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.results-gif {
+  width: 300px; /* Adjust the size as needed */
+  height: auto;
+  border-radius: 10px;
+}
+
 .back-to-map-button {
   margin-top: 20px;
   padding: 10px 20px;
