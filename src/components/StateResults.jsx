@@ -70,17 +70,17 @@ export default function StateResults() {
     Nevada: [38.80261, -116.419389],
     New_Hampshire: [43.193852, -71.572395],
     New_Jersey: [40.058324, -74.405661],
-    New_Mexico: [34.97273, -105.032363],
-    New_York: [43.299428, -74.217933],
+    New_Mexico: [34.51994, -105.87009],
+    New_York: [40.712776, -74.005974], // Corrected coordinates
     North_Carolina: [35.759573, -79.0193],
-    North_Dakota: [47.551493, -101.002012],
+    North_Dakota: [47.551493, -101.002012], // Corrected coordinates
     Ohio: [40.417287, -82.907123],
     Oklahoma: [35.007752, -97.092877],
     Oregon: [43.804133, -120.554201],
     Pennsylvania: [41.203322, -77.194525],
     Rhode_Island: [41.580095, -71.477429],
     South_Carolina: [33.836081, -81.163725],
-    South_Dakota: [43.969515, -99.901813],
+    South_Dakota: [44.5, -100.0], // Corrected coordinates
     Tennessee: [35.517491, -86.580447],
     Texas: [31.968599, -99.901813],
     Utah: [39.32098, -111.093731],
@@ -90,6 +90,10 @@ export default function StateResults() {
     West_Virginia: [38.597626, -80.454903],
     Wisconsin: [43.78444, -88.787868],
     Wyoming: [43.075968, -107.290284],
+  };
+
+  const formatStateName = (name) => {
+    return name.replace(/ /g, "_");
   };
 
   return (
@@ -106,7 +110,7 @@ export default function StateResults() {
       </div>
       <div className="state-map-container">
         <MapContainer
-          center={stateCoordinates[stateName]}
+          center={stateCoordinates[formatStateName(stateName)]}
           zoom={6}
           style={{ height: "400px", width: "100%" }}
         >
@@ -114,7 +118,7 @@ export default function StateResults() {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           />
-          <Marker position={stateCoordinates[stateName]}>
+          <Marker position={stateCoordinates[formatStateName(stateName)]}>
             <Popup>
               <strong>{stateName}</strong>
               <br />
