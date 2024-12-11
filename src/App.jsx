@@ -4,6 +4,7 @@ import Homepage from "./components/HomePage";
 import AboutPage from "./components/AboutPage";
 import MapPage from "./components/MapPage";
 import StateResults from "./components/StateResults";
+import SenateResults from "./components/SenateResults";
 import "./App.css";
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
               <Link to="/Map">Presidential Results</Link>
             </li>
             <li>
+              <Link to="/SenateResults">Senate Results</Link>
+            </li>
+            <li>
               <Link to="/About">About</Link>
             </li>
           </ul>
@@ -26,6 +30,7 @@ function App() {
           <Route path="/" exact element={<Homepage />} />
           <Route path="/About" element={<AboutPage />} />
           <Route path="/Map" element={<MapPage />} />
+          <Route path="/SenateResults" element={<SenateResults />} />
           <Route path="/state/:stateName" element={<StateResults />} />
         </Routes>
       </Router>
