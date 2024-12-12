@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import axios from "axios";
@@ -7,26 +7,6 @@ import "./SenateResults.css";
 
 export default function SenateResults() {
   const navigate = useNavigate();
-  const [stateResults, setStateResults] = useState({});
-
-  useEffect(() => {
-    const fetchResults = async () => {
-      try {
-        const response = await axios.get(
-          "http://localhost:5000/api/senate-results"
-        );
-        const results = response.data.reduce((acc, result) => {
-          acc[result.state] = result;
-          return acc;
-        }, {});
-        setStateResults(results);
-      } catch (error) {
-        console.error("Error fetching senate results:", error);
-      }
-    };
-
-    fetchResults();
-  }, []);
 
   const handleStateClick = (stateName) => {
     navigate(`/senate/${stateName}`);
@@ -106,23 +86,7 @@ export default function SenateResults() {
                 handleStateClick(state.replace(/_/g, " "));
               },
             }}
-          >
-            <Popup>
-              <strong>{state.replace(/_/g, " ")}</strong>
-              <br />
-              {stateResults[state] ? (
-                <>
-                  Senator: {stateResults[state].senator}
-                  <br />
-                  Party: {stateResults[state].party}
-                  <br />
-                  Percentage: {stateResults[state].percentage}%
-                </>
-              ) : (
-                "No data available"
-              )}
-            </Popup>
-          </Marker>
+          ></Marker>
         ))}
       </MapContainer>
     </div>
