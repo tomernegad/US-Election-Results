@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const resultsRouter = require("./routes/results");
+const senateResultsRouter = require("./routes/senateResults"); // Import the new route
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -20,6 +21,7 @@ mongoose
 
 // Routes
 app.use("/api/election-results", resultsRouter);
+app.use("/api/senate-results", senateResultsRouter); // Add the new route
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
