@@ -10,25 +10,6 @@ export default function PresidentialResultsPage() {
   const navigate = useNavigate();
   const [stateResults, setStateResults] = useState({});
 
-  useEffect(() => {
-    const fetchResults = async () => {
-      try {
-        const response = await axios.get(
-          "http://localhost:5000/api/election-results"
-        );
-        const results = response.data.reduce((acc, result) => {
-          acc[result.state] = result;
-          return acc;
-        }, {});
-        setStateResults(results);
-      } catch (error) {
-        console.error("Error fetching election results:", error);
-      }
-    };
-
-    fetchResults();
-  }, []);
-
   const handleStateClick = (stateName) => {
     navigate(`/state/${stateName}`);
   };
