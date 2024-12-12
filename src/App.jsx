@@ -5,7 +5,7 @@ import AboutPage from "./components/AboutPage";
 import PresidentialResultsPage from "./components/PresidentialResultsPage";
 import PresidentialResultsStatePage from "./components/PresidentialResultsStatePage";
 import SenateResults from "./components/SenateResults";
-
+import SenateResultsState from "./components/SenateResultsState";
 import "./App.css";
 
 function App() {
@@ -40,6 +40,7 @@ function App() {
             element={<PresidentialResultsStatePage />}
           />
           <Route path="/SenateResults" element={<SenateResults />} />
+          <Route path="/senate/:stateName" element={<SenateResultsState />} />
         </Routes>
       </Router>
     </div>
