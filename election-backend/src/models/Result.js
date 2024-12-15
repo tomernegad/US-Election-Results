@@ -1,10 +1,10 @@
-import mongoose from "mongoose";
 const mongoose = require("mongoose");
 
 const ResultSchema = new mongoose.Schema({
   state: { type: String, required: true },
-  Trump: { type: mongoose.Schema.Types.Mixed, required: true },
-  Harris: { type: mongoose.Schema.Types.Mixed, required: true },
+  Trump: { type: Number, required: true },
+  Harris: { type: Number, required: true },
+  color: { type: String, required: true },
 });
 
-module.exports = mongoose.model("Result", ResultSchema, "results");
+module.exports = mongoose.model("Result", ResultSchema);

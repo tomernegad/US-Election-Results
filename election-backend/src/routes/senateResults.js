@@ -1,4 +1,3 @@
-import express from "express";
 const express = require("express");
 const router = express.Router();
 const SenateResult = require("../models/SenateResults");
@@ -11,7 +10,6 @@ router.get("/", async (req, res) => {
       `Received request for state: ${stateName} at ${new Date().toISOString()}`
     );
 
-    // Check if stateName is defined
     if (!stateName) {
       console.log("State query parameter is required");
       return res
@@ -19,7 +17,6 @@ router.get("/", async (req, res) => {
         .json({ message: "State query parameter is required" });
     }
 
-    // Log the state name before querying
     console.log(`Querying for state: ${stateName}`);
 
     const result = await SenateResult.findOne({ state: stateName });
@@ -30,17 +27,7 @@ router.get("/", async (req, res) => {
       return res.status(404).json({ message: "State not found" });
     }
 
-    // Enhanced response
-    const parsedResult = {
-      state: result.state,
-      senator: result.senator,
-      party: result.party,
-      percentage: result.percentage,
-      opponent: result.opponent,
-      opponent_party: result.opponent_party,
-      opponent_percentage: result.opponent_percentage,
-    };
-    res.json(parsedResult);
+    res.json(result);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server error" });
