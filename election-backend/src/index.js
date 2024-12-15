@@ -1,3 +1,5 @@
+import express from "express";
+import mongoose from "mongoose";
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");

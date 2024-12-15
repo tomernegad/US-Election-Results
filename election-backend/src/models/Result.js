@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 const mongoose = require("mongoose");
 
 const ResultSchema = new mongoose.Schema({
@@ -6,4 +7,4 @@ const ResultSchema = new mongoose.Schema({
   Harris: { type: mongoose.Schema.Types.Mixed, required: true },
 });
 
-module.exports = mongoose.model("Result", ResultSchema);
+module.exports = mongoose.model("Result", ResultSchema, "results");
