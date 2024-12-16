@@ -35,10 +35,16 @@ export default function SenateResultsState() {
   const repWinGif =
     "https://media2.giphy.com/media/e3AkpsMjcfHz8d2aqe/giphy.webp?cid=ecf05e47deuczcj7qtiwqm9a9rm0iqeuwkstwyz88ti7kubn&ep=v1_gifs_search&rid=giphy.webp&ct=g";
   const repLoseGif =
-    "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExajFmdXl6d2Z5dG1tOXE5cTFmdXhtempxcXpwMjdjaTBsYWFpbXhxOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3ZT6j8x7KHGpaxT26l/giphy.webp";
+    "https://media0.giphy.com/media/vXwhrRaKPPaYtkSOyO/giphy.webp?cid=790b7611n79ar1ytj2atv4ingiy9kye5e0w4uxhh5q9zpuu5&ep=v1_gifs_search&rid=giphy.webp&ct=g";
 
-  const isDemocraticWinner = results.percentage > results.opponent_percentage;
-  const isRepublicanWinner = results.opponent_percentage > results.percentage;
+  const demPercentage =
+    results.party === "Democratic"
+      ? results.percentage
+      : results.opponent_percentage;
+  const repPercentage =
+    results.party === "Republican"
+      ? results.percentage
+      : results.opponent_percentage;
 
   return (
     <div className="results-container">
@@ -60,8 +66,12 @@ export default function SenateResultsState() {
             %
           </p>
           <img
-            src={isDemocraticWinner ? demWinGif : demLoseGif}
-            alt={isDemocraticWinner ? "Democratic Win" : "Democratic Lose"}
+            src={demPercentage > repPercentage ? demWinGif : demLoseGif}
+            alt={
+              demPercentage > repPercentage
+                ? "Democratic Win"
+                : "Democratic Lose"
+            }
             className="result-gif"
           />
         </div>
@@ -81,8 +91,12 @@ export default function SenateResultsState() {
             %
           </p>
           <img
-            src={isRepublicanWinner ? repWinGif : repLoseGif}
-            alt={isRepublicanWinner ? "Republican Win" : "Republican Lose"}
+            src={repPercentage > demPercentage ? repWinGif : repLoseGif}
+            alt={
+              repPercentage > demPercentage
+                ? "Republican Win"
+                : "Republican Lose"
+            }
             className="result-gif"
           />
         </div>
