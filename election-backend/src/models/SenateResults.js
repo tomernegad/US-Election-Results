@@ -10,4 +10,4 @@ const SenateResultSchema = new mongoose.Schema({
   opponent_percentage: { type: Number, required: true },
 });
 
-module.exports = mongoose.model("SenateResult", SenateResultSchema);
+module.exports = mongoose.model("SenateResults", SenateResultSchema);
