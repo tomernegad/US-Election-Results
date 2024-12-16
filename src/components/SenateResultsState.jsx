@@ -28,10 +28,17 @@ export default function SenateResultsState() {
     return <div>Loading...</div>;
   }
 
-  const winGif = "https://media.giphy.com/media/3o6Zt481isNVuQI1l6/giphy.gif";
-  const loseGif = "https://media.giphy.com/media/3o6Zt8LdG9p0kz4F7y/giphy.gif";
+  const demWinGif =
+    "https://media1.giphy.com/media/KXOKGDNL5dxik2LrpM/giphy.webp?cid=790b7611xrxi3evkue7khshgds65tjw76sb8ib158ib4imnq&ep=v1_gifs_search&rid=giphy.webp&ct=g";
+  const demLoseGif =
+    "https://media3.giphy.com/media/3LgepdPI3ReXaOJhg7/giphy.webp?cid=ecf05e47060jb9tf1v5togetvm1i7ie37m26n14qhh1107uk&ep=v1_gifs_search&rid=giphy.webp&ct=g";
+  const repWinGif =
+    "https://media2.giphy.com/media/e3AkpsMjcfHz8d2aqe/giphy.webp?cid=ecf05e47deuczcj7qtiwqm9a9rm0iqeuwkstwyz88ti7kubn&ep=v1_gifs_search&rid=giphy.webp&ct=g";
+  const repLoseGif =
+    "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExajFmdXl6d2Z5dG1tOXE5cTFmdXhtempxcXpwMjdjaTBsYWFpbXhxOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3ZT6j8x7KHGpaxT26l/giphy.webp";
 
-  const isDemocraticWinner = results.party === "Democratic";
+  const isDemocraticWinner = results.percentage > results.opponent_percentage;
+  const isRepublicanWinner = results.opponent_percentage > results.percentage;
 
   return (
     <div className="results-container">
@@ -53,8 +60,8 @@ export default function SenateResultsState() {
             %
           </p>
           <img
-            src={isDemocraticWinner ? winGif : loseGif}
-            alt={isDemocraticWinner ? "Win" : "Lose"}
+            src={isDemocraticWinner ? demWinGif : demLoseGif}
+            alt={isDemocraticWinner ? "Democratic Win" : "Democratic Lose"}
             className="result-gif"
           />
         </div>
@@ -74,14 +81,14 @@ export default function SenateResultsState() {
             %
           </p>
           <img
-            src={!isDemocraticWinner ? winGif : loseGif}
-            alt={!isDemocraticWinner ? "Win" : "Lose"}
+            src={isRepublicanWinner ? repWinGif : repLoseGif}
+            alt={isRepublicanWinner ? "Republican Win" : "Republican Lose"}
             className="result-gif"
           />
         </div>
       </div>
       <Link to="/SenateResults" className="back-to-map-button">
-        Back to Senate Results
+        Go Back to Senate Results
       </Link>
     </div>
   );
